@@ -12,7 +12,7 @@ func ConnectDb() {
 	var (
 		err error
 	)
-	Db, err = gorm.Open(mysql.Open("root:123456@tcp(127.0.0.1:3306)/blog?charset=utf8&parseTime=True&loc=Local"), &gorm.Config{})
+	Db, err = gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/blog?charset=utf8&parseTime=True&loc=Local"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
