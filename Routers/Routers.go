@@ -3,6 +3,7 @@ package Routers
 import (
 	"github.com/gin-gonic/gin"
 	"golang-blog/Controller/HomeControoler"
+	"golang-blog/Service/ConfigService"
 )
 
 func Init(router *gin.Engine) {
@@ -18,5 +19,6 @@ func Init(router *gin.Engine) {
 		home.GET("/Hi", HomeControoler.Hi)
 	}
 
-	router.Run(":8888") // 监听并在 127.0.0.1:8888 上启动服务
+	serverConfig := ConfigService.GetServerConfig()
+	router.Run(serverConfig.HTTP_PORT) // 监听并在 127.0.0.1:8888 上启动服务
 }
