@@ -2,7 +2,7 @@ package Routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"golang-blog/Controller/HomeControoler"
+	"golang-blog/Controller/HomeControler"
 	"golang-blog/Service/ConfigService"
 )
 
@@ -15,8 +15,8 @@ func Init(router *gin.Engine) {
 	router.RedirectFixedPath = true
 
 	{
-		home.GET("/", HomeControoler.Index)
-		home.GET("/Hi", HomeControoler.Hi)
+		home.GET("/", HomeControler.Index)
+		home.GET("/Hi", HomeControler.Hi)
 	}
 
 	serverConfig := ConfigService.GetServerConfig()
