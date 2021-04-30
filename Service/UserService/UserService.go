@@ -5,6 +5,15 @@ import (
 	"golang-blog/Service/DbService"
 )
 
+// 根据登录名和密码查询用户信息
+func GetUserInfo(loginName string, password string) Entity.UserEntity {
+	var (
+		user Entity.UserEntity
+	)
+	DbService.Db.Where(&Entity.UserEntity{LoginName: loginName, Password: password}).First(&user)
+	return user
+}
+
 func ByLoginNameGetUser(loginName string) Entity.UserEntity {
 	var (
 		user Entity.UserEntity

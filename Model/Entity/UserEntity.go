@@ -8,6 +8,7 @@ type UserEntity struct {
 	NickName  string
 }
 
+// 自定义表名称
 func (UserEntity) TableName() string {
 	return "User"
 }

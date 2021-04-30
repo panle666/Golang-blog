@@ -3,11 +3,17 @@ package Routers
 import (
 	"github.com/gin-gonic/gin"
 	"golang-blog/Controller/HomeControler"
+	"golang-blog/Controller/LoginController"
+	"golang-blog/Controller/RegisterController"
+	"golang-blog/Controller/UserController"
 	"golang-blog/Service/ConfigService"
 )
 
 func Init(router *gin.Engine) {
 	home := router.Group("Home")
+	register := router.Group("Register")
+	user := router.Group("User")
+	login := router.Group("Login")
 
 	// 1.首位多余元素会被删除(../ or //);
 	//2.然后路由会对新的路径进行不区分大小写的查找;
@@ -17,6 +23,12 @@ func Init(router *gin.Engine) {
 	{
 		home.GET("/", HomeControler.Index)
 		home.GET("/Hi", HomeControler.Hi)
+
+		register.POST("/RegisterUser", RegisterController.RegisterUser)
+
+		user.GET("/GetUserInfo", UserController.GetUserInfo)
+
+		login.POST("/Index", LoginController.Index)
 	}
 
 	serverConfig := ConfigService.GetServerConfig()
